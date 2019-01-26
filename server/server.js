@@ -3,6 +3,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 
+const Project = require('./models/Project');
+
 require('dotenv').config({ path: 'variables.env' });
 
 const API_PORT = 3001;
@@ -23,5 +25,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(logger('dev'));
 /*****************************************************************************/
+
+app.get('/projectList', (req, res) => {
+	Project.find((error, projectList) => {
+		if( error )
+		{
+//			res.json();
+			res.send({ error, msg: 'There was an error getting the project list' });
+		}
+		
+		res.send(projectList);
+	});
+});
+app.post('/project', (req, res) => {
+});
 
 app.listen( API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`) );
