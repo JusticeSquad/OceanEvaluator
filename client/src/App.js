@@ -1,6 +1,8 @@
 import React from 'react';
 import Header from './components/Header';
-import ProjectListPanel from './components/ProjectListPanel';
+import ProjectListCard from './components/ProjectListCard';
+import SelectedProjectCard from './components/SelectedProjectCard';
+import FeatureListCard from './components/FeatureListCard';
 
 const stylesMainContainer = {
 	padding: '20px'
@@ -13,7 +15,9 @@ class App extends React.Component {
 				<Header />
 				
 				<div style={stylesMainContainer}>
-					<ProjectListPanel />
+					<ProjectListCard />
+					<SelectedProjectCard />
+					<FeatureListCard />
 				</div>
 			</div>
 		);
