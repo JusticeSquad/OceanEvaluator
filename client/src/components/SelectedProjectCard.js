@@ -1,5 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import OceanFactorCard from './OceanFactorCard';
+import * as utils from '../utils';
 
 
 const stylesSelectProjectCardContainer = {
@@ -87,9 +89,12 @@ const testData = [
 
 class SelectedProjectCard extends React.Component {
 	render() {
+		const project = utils.getProjectById(this.props.projectListData.projectList, this.props.selectedProjectId);
+		const projectName = (project !== undefined && project !== null) ? project.name : null;
+		
 		return (
 			<div style={stylesSelectProjectCardContainer}>
-				<h2>Selected Project</h2>
+				<h2>{projectName}</h2>
 				
 				<form>
 					<input type='button' value='Add New Feature' />
@@ -104,4 +109,8 @@ class SelectedProjectCard extends React.Component {
 	}
 }
 
-export default SelectedProjectCard;
+const mapStateToProps = state => ({
+	...state
+});
+
+export default connect(mapStateToProps)(SelectedProjectCard);
