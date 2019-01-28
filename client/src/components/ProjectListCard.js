@@ -36,7 +36,7 @@ class ProjectListCard extends React.Component {
 				<ul>
 					{this.props.projectListData.projectList.map((project, index) => (
 						<li key={`ocean-eval-project-${project._id}`}>
-							<a href='#' onClick={this.handleClick.bind(this, project)}>{project.name}</a>
+							<input type='button' onClick={this.handleClick.bind(this, project)} value={project.name} />
 						</li>
 					))}
 				</ul>
