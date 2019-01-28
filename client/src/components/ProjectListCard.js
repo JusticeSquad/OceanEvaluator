@@ -1,6 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { requestProjectList } from '../actions/projectActions';
+import {
+	actionSelectProject,
+	requestProjectList
+} from '../actions/projectActions';
 
 
 const stylesProjectCardContainer = {
@@ -17,6 +20,10 @@ class ProjectListCard extends React.Component {
 		this.props.dispatch(requestProjectList());
 	}
 	
+	handleClick(project) {
+		this.props.dispatch(actionSelectProject(project));
+	}
+	
 	render() {
 		return (
 			<div style={stylesProjectCardContainer}>
@@ -28,7 +35,9 @@ class ProjectListCard extends React.Component {
 				
 				<ul>
 					{this.props.projectListData.projectList.map((project, index) => (
-						<li key={`ocean-eval-project-${index}`}>{project.name}</li>
+						<li key={`ocean-eval-project-${project._id}`}>
+							<a href='#' onClick={this.handleClick.bind(this, project)}>{project.name}</a>
+						</li>
 					))}
 				</ul>
 			</div>

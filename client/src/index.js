@@ -5,11 +5,15 @@ import * as serviceWorker from './serviceWorker';
 import { combineReducers, createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { Provider } from 'react-redux';
-import reducerProjectList from './reducers/projectReducers';
+import {
+	reducerProjectList,
+	reducerSelectProject
+} from './reducers/projectReducers';
 
 
 const reducers = combineReducers({
-	projectListData: reducerProjectList
+	projectListData: reducerProjectList,
+	selectedProjectId: reducerSelectProject
 });
 
 const store = createStore(

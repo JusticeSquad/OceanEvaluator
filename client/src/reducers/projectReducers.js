@@ -3,7 +3,7 @@ import {
 } from '../actions/projectActions';
 
 
-const reducerProjectList = (state={
+export const reducerProjectList = (state={
 	projectList: [],
 	isRequesting: false,
 	didInvalidate: false,
@@ -31,4 +31,11 @@ const reducerProjectList = (state={
 	}
 };
 
-export default reducerProjectList;
+export const reducerSelectProject = (state=null, action) => {
+	switch( action.type )
+	{
+		case ACTION_TYPE_PROJECT_LIST.SELECT:
+			return action.selectedProjectId;
+		default: return state;
+	}
+};

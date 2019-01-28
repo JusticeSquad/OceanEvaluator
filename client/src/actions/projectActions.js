@@ -4,7 +4,8 @@ import axios from 'axios';
 export const ACTION_TYPE_PROJECT_LIST = {
 	REQUEST: 'PROJECT_REQUEST',
 	RECEIVE: 'PROJECT_RECEIVE',
-	INVALIDATE: 'PROJECT_INVALIDATE'
+	INVALIDATE: 'PROJECT_INVALIDATE',
+	SELECT: 'PROJECT_SELECT'
 };
 
 export const actionRequestProjectList = () => ({
@@ -20,6 +21,11 @@ export const actionReceiveProjectList = (projectList) => ({
 export const actionInvalidateProjectList = () => ({
 	type: ACTION_TYPE_PROJECT_LIST.INVALIDATE
 });
+
+export const actionSelectProject = (project) => ({
+	type: ACTION_TYPE_PROJECT_LIST.SELECT,
+	selectedProjectId: project._id
+})
 
 function getProjectList() {
 	return dispatch => {
