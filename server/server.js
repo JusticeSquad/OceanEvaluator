@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 
+const Feature = require('./models/Feature');
 const Project = require('./models/Project');
 
 require('dotenv').config({ path: 'variables.env' });
@@ -28,6 +29,7 @@ app.use(logger('dev'));
 
 app.get('/projectList', (req, res) => {
 	Project.find((error, projectList) => {
+		// TODO: Improve error handling
 		if( error )
 		{
 //			res.json();
@@ -37,7 +39,37 @@ app.get('/projectList', (req, res) => {
 		res.send(projectList);
 	});
 });
-app.post('/project', (req, res) => {
+
+app.get('/featureList/:projectId', (req, res) => {
+	Feature.find(
+		{ projectId: req.params.projectId },
+		(error, featureList) => {
+			// TODO: Improve error handling
+			if( error )
+			{
+				res.send({ error, msg: 'There was an error getting the feature list' });
+			}
+			
+			res.json({ featureList, projectId: req.params.projectId });
+		}
+	);
+});
+
+app.post('/addFeature', (req, res) => {
+	const newFeature = {
+		name: req.body.name,
+		projectId: req.body.projectId,
+		description: req.body.description,
+		facetList: req.body.facetList
+	};
+	
+	// TODO: Improve error handling
+	(new Feature(newFeature)).save((error, feature) => {
+		if( error )
+			res.status(412).send(error);
+		else
+			res.json(feature);
+	});
 });
 
 app.listen( API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`) );

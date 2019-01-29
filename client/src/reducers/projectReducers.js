@@ -20,7 +20,8 @@ export const reducerProjectList = (state={
 			return Object.assign({}, state, {
 				projectList: action.projectList,
 				isRequesting: false,
-				didInvalidate: false
+				didInvalidate: false,
+				lastUpdated: action.receivedAt
 			});
 		case ACTION_TYPE_PROJECT_LIST.INVALIDATE:
 			return Object.assign({}, state, {
