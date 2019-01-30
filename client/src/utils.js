@@ -1,3 +1,6 @@
+import { oceanFactorData } from './data/oceanFactorData';
+
+
 export const getProjectById = (projectList, projectId) => {
 	if( projectList === undefined || projectList === null )
 		return null;
@@ -9,4 +12,16 @@ export const getProjectById = (projectList, projectId) => {
 	}
 	
 	return null;
+};
+
+export const getFacetListByFactor = (factorName) => {
+	for( var oceanFactor of oceanFactorData )
+	{
+		if( oceanFactor.name === factorName )
+		{
+			return oceanFactor.facetList;
+		}
+	}
+	
+	return [];
 };
