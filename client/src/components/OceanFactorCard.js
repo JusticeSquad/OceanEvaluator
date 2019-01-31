@@ -33,9 +33,9 @@ class OceanFactorCard extends React.Component {
 				
 				{this.props.facetList.map((facet, index) => (
 					<div key={`${index}`}>
-						<div style={stylesFacetMin}>{Math.round(Math.random() * -100)}</div>
+						<div style={stylesFacetMin}>{facet.min}</div>
 						<div style={stylesFacetName}>{facet.name}</div>
-						<div style={stylesFacetMax}>{Math.round(Math.random() * 100)}</div>
+						<div style={stylesFacetMax}>{facet.max}</div>
 					</div>
 				))}
 			</div>

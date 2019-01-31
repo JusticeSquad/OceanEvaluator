@@ -1,79 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import OceanFactorCard from './OceanFactorCard';
+import { getFactorListFromFacetList } from '../utils';
 
-
-const testData = [
-	{
-		name: 'Manga Style / Coloring',
-		description: 'In addition manga-style card art, the game space looks like a manga-style world come to life.',
-		oceanDataList: [
-			{
-				factor: 'Openness to Experience',
-				facetList: [
-					{
-						name: 'Fantasy',
-						min: 0,
-						max: 100
-					},
-					{
-						name: 'Aesthetics',
-						min: 0,
-						max: 100
-					}
-				]
-			}
-		]
-	},
-	{
-		name: 'Training Cards',
-		description: 'Characters can choose to train and increase their power instead of fighting on a turn. Striking the right balance is key to a winning strategy.',
-		oceanDataList: [
-/*			{
-				factor: 'Openness to Experience',
-				facet: 'Fantasy',
-				min: null,
-				max: 40
-			},
-			{
-				factor: 'Conscientiousness',
-				facet: 'Competence',
-				min: -40,
-				max: 60
-			},
-			{
-				factor: 'Conscientiousness',
-				facet: 'Achievement Striving',
-				min: -40,
-				max: 80
-			}*/
-			{
-				factor: 'Openness to Experience',
-				facetList: [
-					{
-						name: 'Fantasy',
-						min: 0,
-						max: 40
-					}
-				]
-			},
-			{
-				factor: 'Conscientiousness',
-				facetList: [
-					{
-						name: 'Competence',
-						min: -40,
-						max: 60
-					},
-					{
-						name: 'Achievement Striving',
-						min: -40,
-						max: 80
-					}
-				]
-			}
-		]
-	}
-];
 
 const stylesFeatureListCardContainer = {
 	display: 'inline-block',
@@ -96,13 +25,14 @@ class FeatureListCard extends React.Component {
 			<div style={stylesFeatureListCardContainer}>
 				<h2>Features</h2>
 				
-				{testData.map((data, index) => (
-					<div key={`${data.name}`} style={stylesFeatureCard}>
-						<div>{data.name}</div>
-						<div>{data.description}</div>
+				{this.props.featureListData.featureList.length > 0 &&
+					this.props.featureListData.featureList.map((feature, index) => (
+					<div key={`${feature.name}`} style={stylesFeatureCard}>
+						<h4>{feature.name}</h4>
+						<div>{feature.description}</div>
 						
-						{data.oceanDataList.map((oceanData, index) => (
-							<OceanFactorCard key={`${index}`} name={oceanData.factor} facetList={oceanData.facetList} />
+						{getFactorListFromFacetList(feature.facetList).map((oceanFactor, index) => (
+							<OceanFactorCard key={`${index}`} name={oceanFactor.name} facetList={oceanFactor.facetList} />
 						))}
 					</div>
 				))}
@@ -111,4 +41,8 @@ class FeatureListCard extends React.Component {
 	}
 }
 
-export default FeatureListCard;
+const mapStateToProps = state => ({
+	...state
+});
+
+export default connect(mapStateToProps)(FeatureListCard);
