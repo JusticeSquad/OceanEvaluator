@@ -1,27 +1,30 @@
 import React from 'react';
+import OceanFacetEditPanel from './OceanFacetEditPanel';
 import { oceanFactorData } from '../data/oceanFactorData';
-import { getFacetListByFactor } from '../utils';
 
-
-const stylesFacetName = {
-	display: 'inline-block',
-	width: '142px',
-	textAlign: 'center'
-};
-
-const stylesFacetText = {
-	width: '30px'
-};
 
 class OceanFactorSelectionCard extends React.Component {
 	constructor(props) {
 		super(props);
 		
 		this.handleSelectFactor = this.handleSelectFactor.bind(this);
+		this.handleFacetMinChange = this.handleFacetMinChange.bind(this);
+		this.renderFacet = this.renderFacet.bind(this);
 	}
 	
 	handleSelectFactor(event) {
 		this.props.handleSelectFactor(event.target.value, this.props.index);
+	}
+	
+	handleFacetMinChange(facetMinValue, facetIndex) {
+		this.props.handleFacetMinChange(this.props.index, facetIndex, facetMinValue);
+	}
+	
+	renderFacet(facet, index) {
+		return <OceanFacetEditPanel key={`ocean-facet-edit-${index}`}
+			facet={facet}
+			index={index}
+			handleFacetMinChange={this.handleFacetMinChange} />;
 	}
 	
 	render() {
@@ -34,13 +37,7 @@ class OceanFactorSelectionCard extends React.Component {
 					))}
 				</select>
 				
-				{/*this.props.facetList.length > 0 && this.props.facetList.map((facet, index) => (
-					<div key={facet.name}>
-						<input type='text' value={facet.min} style={stylesFacetText} />
-						<span style={stylesFacetName}>{facet.name}</span>
-						<input type='text' value={facet.max} style={stylesFacetText} />
-					</div>
-				))*/}
+				{this.props.facetList.length > 0 && this.props.facetList.map(this.renderFacet)}
 			</div>
 		);
 	}

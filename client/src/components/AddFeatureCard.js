@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import OceanFactorSelectionCard from './OceanFactorSelectionCard';
 import { actionAddFeature } from '../actions/featureActions';
 import { oceanFactorData } from '../data/oceanFactorData';
+import { getFacetListByFactor } from '../utils';
 
 
 const stylesAddFeatureCardContainer = {
@@ -31,6 +32,7 @@ class AddFeatureCard extends React.Component {
 		this.handleAddOceanFactor = this.handleAddOceanFactor.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleSelectFactor = this.handleSelectFactor.bind(this);
+		this.handleFacetMinChange = this.handleFacetMinChange.bind(this);
 		this.renderOceanFactorSelectionCard = this.renderOceanFactorSelectionCard.bind(this);
 	}
 	
@@ -44,20 +46,8 @@ class AddFeatureCard extends React.Component {
 	}
 	
 	handleAddOceanFactor() {
-		const sampleFactor = oceanFactorData[0];
 		let newFactor = { name: '', facetList: [] };
 		let newFactorList = this.state.factorList;
-		
-		for( var i = 0; i < sampleFactor.facetList.length; i++ )
-		{
-			const newFacet = {
-				name: '',
-				min: 0,
-				max: 0
-			};
-			
-			newFactor.facetList.push(newFacet);
-		}
 		
 		newFactorList.push(newFactor);
 		
@@ -98,19 +88,45 @@ class AddFeatureCard extends React.Component {
 	
 	/** Ocean Factor Input Handling ******************************************/
 	handleSelectFactor(factorName, index) {
-		console.log('new factor -> ', factorName);
-		
 		let newFactorList = this.state.factorList;
+		let newFacetList = [];
+		const oceanFacetList = getFacetListByFactor(factorName);
 		newFactorList[index].name = factorName;
+		
+		for( var facet of oceanFacetList )
+		{
+			const newFacet = {
+				name: facet.name,
+				min: 0,
+				max: 0
+			};
+			
+			newFacetList.push(newFacet);
+		}
+		
+		newFactorList[index].facetList = newFacetList;
+		
+		this.setState({ factorList: newFactorList });
+	}
+	
+	handleFacetMinChange(factorIndex, facetIndex, facetMinValue) {
+		let newFactorList = this.state.factorList;
+		
+		const newValue = parseInt(facetMinValue, 10);
+		
+		newFactorList[factorIndex].facetList[facetIndex].min =
+			!isNaN(newValue) ? newValue : 0;
 		
 		this.setState({ factorList: newFactorList });
 	}
 	
 	renderOceanFactorSelectionCard(factor, index) {
-		return <OceanFactorSelectionCard key={index}
+		return <OceanFactorSelectionCard key={`ocean-factor-select${index}`}
 			factorName={factor.name}
+			facetList={factor.facetList}
 			index={index}
-			handleSelectFactor={this.handleSelectFactor} />
+			handleSelectFactor={this.handleSelectFactor}
+			handleFacetMinChange={this.handleFacetMinChange} />
 	}
 	/*************************************************************************/
 	
@@ -144,7 +160,8 @@ class AddFeatureCard extends React.Component {
 					
 					<div>
 						<input type='button' value='Add Ocean Factor'
-							onClick={this.handleAddOceanFactor} />
+							onClick={this.handleAddOceanFactor}
+							disabled={this.state.factorList.length === oceanFactorData.length}/>
 					</div>
 					
 					{this.state.factorList.length > 0 && this.state.factorList.map(this.renderOceanFactorSelectionCard)}
