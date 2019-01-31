@@ -32,7 +32,7 @@ class AddFeatureCard extends React.Component {
 		this.handleAddOceanFactor = this.handleAddOceanFactor.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleSelectFactor = this.handleSelectFactor.bind(this);
-		this.handleFacetMinChange = this.handleFacetMinChange.bind(this);
+		this.handleFacetChange = this.handleFacetChange.bind(this);
 		this.renderOceanFactorSelectionCard = this.renderOceanFactorSelectionCard.bind(this);
 	}
 	
@@ -65,16 +65,43 @@ class AddFeatureCard extends React.Component {
 		});
 	}
 	
+	// Take the form data for the new feature and convert it into
+	// the format required for saving to the database
+	prepareDataForSubmission(formOceanFactorList) {
+		let finalFacetList = [];
+		
+		for( var factor of formOceanFactorList)
+		{
+			for( var facet of factor.facetList )
+			{
+				// If this facet doesn't have relevant data, skip it
+				if( facet.min === 0 && facet.max === 0 )
+					continue;
+				
+				// Add this facet to the final list
+				finalFacetList.push({
+					name: facet.name,
+					min: facet.min,
+					max: facet.max
+				});
+			}
+		}
+		
+		return finalFacetList;
+	}
+	
 	handleSubmit(event) {
 		event.preventDefault();
 		
 		this.setState({ submitDisabled: true });
 		
+		const finalFacetList = this.prepareDataForSubmission(this.state.factorList);
+		
 		axios.post('/addFeature', {
 			name: this.state.name,
 			projectId: this.props.selectedProjectId,
 			description: this.state.description,
-			facetList: [] //this.state.facetList
+			facetList: finalFacetList
 		}).then((res) => {
 			this.props.dispatch(actionAddFeature(res.data));
 			this.clearForm();
@@ -109,13 +136,22 @@ class AddFeatureCard extends React.Component {
 		this.setState({ factorList: newFactorList });
 	}
 	
-	handleFacetMinChange(factorIndex, facetIndex, facetMinValue) {
+	handleFacetChange(factorIndex, facetIndex, facetMinValue, facetMaxValue) {
 		let newFactorList = this.state.factorList;
 		
-		const newValue = parseInt(facetMinValue, 10);
+		if( facetMinValue !== null )
+		{
+			const newMin = parseInt(facetMinValue, 10);
+			newFactorList[factorIndex].facetList[facetIndex].min =
+				!isNaN(newMin) ? newMin : 0;
+		}
 		
-		newFactorList[factorIndex].facetList[facetIndex].min =
-			!isNaN(newValue) ? newValue : 0;
+		if( facetMaxValue !== null )
+		{
+			const newMax = parseInt(facetMaxValue, 10);
+			newFactorList[factorIndex].facetList[facetIndex].max =
+				!isNaN(newMax) ? newMax : 0;
+		}
 		
 		this.setState({ factorList: newFactorList });
 	}
@@ -126,15 +162,9 @@ class AddFeatureCard extends React.Component {
 			facetList={factor.facetList}
 			index={index}
 			handleSelectFactor={this.handleSelectFactor}
-			handleFacetMinChange={this.handleFacetMinChange} />
+			handleFacetChange={this.handleFacetChange} />
 	}
 	/*************************************************************************/
-	
-	componentDidUpdate() {
-		console.log('********************');
-		console.log(this.state);
-		console.log('********************');
-	}
 	
 	render() {
 		return (

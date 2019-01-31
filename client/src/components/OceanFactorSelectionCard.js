@@ -8,7 +8,7 @@ class OceanFactorSelectionCard extends React.Component {
 		super(props);
 		
 		this.handleSelectFactor = this.handleSelectFactor.bind(this);
-		this.handleFacetMinChange = this.handleFacetMinChange.bind(this);
+		this.handleFacetChange = this.handleFacetChange.bind(this);
 		this.renderFacet = this.renderFacet.bind(this);
 	}
 	
@@ -16,15 +16,15 @@ class OceanFactorSelectionCard extends React.Component {
 		this.props.handleSelectFactor(event.target.value, this.props.index);
 	}
 	
-	handleFacetMinChange(facetMinValue, facetIndex) {
-		this.props.handleFacetMinChange(this.props.index, facetIndex, facetMinValue);
+	handleFacetChange(facetIndex, facetMinValue, facetMaxValue) {
+		this.props.handleFacetChange(this.props.index, facetIndex, facetMinValue, facetMaxValue);
 	}
 	
 	renderFacet(facet, index) {
 		return <OceanFacetEditPanel key={`ocean-facet-edit-${index}`}
 			facet={facet}
 			index={index}
-			handleFacetMinChange={this.handleFacetMinChange} />;
+			handleFacetChange={this.handleFacetChange} />;
 	}
 	
 	render() {

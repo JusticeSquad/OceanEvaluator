@@ -20,10 +20,11 @@ class OceanFacetEditPanel extends React.Component {
 	}
 	
 	handleFacetMinChange(event) {
-		this.props.handleFacetMinChange(event.target.value, this.props.index);
+		this.props.handleFacetChange(this.props.index, event.target.value, null);
 	}
 	
 	handleFacetMaxChange(event) {
+		this.props.handleFacetChange(this.props.index, null, event.target.value);
 	}
 	
 	render() {
