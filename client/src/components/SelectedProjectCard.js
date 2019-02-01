@@ -28,8 +28,8 @@ class SelectedProjectCard extends React.Component {
 					<input type='button' value='View All Features' />
 				</form>
 				
-				{oceanFactorData.map((data, index) => (
-					<OceanFactorCard key={index} name={data.name} facetList={data.facetList} />
+				{utils.getEvaluatedOceanListByFeatureList(this.props.featureListData.featureList).map((factor, index) => (
+					<OceanFactorCard key={index} name={factor.name} facetList={factor.facetList} />
 				))}
 			</div>
 		);

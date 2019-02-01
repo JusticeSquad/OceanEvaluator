@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import OceanFactorCard from './OceanFactorCard';
-import { getFactorListFromFacetList } from '../utils';
+import { getFactorListByFacetList } from '../utils';
 
 
 const stylesFeatureListCardContainer = {
@@ -31,7 +31,7 @@ class FeatureListCard extends React.Component {
 						<h4>{feature.name}</h4>
 						<div>{feature.description}</div>
 						
-						{getFactorListFromFacetList(feature.facetList).map((oceanFactor, index) => (
+						{getFactorListByFacetList(feature.facetList).map((oceanFactor, index) => (
 							<OceanFactorCard key={`${index}`} name={oceanFactor.name} facetList={oceanFactor.facetList} />
 						))}
 					</div>
