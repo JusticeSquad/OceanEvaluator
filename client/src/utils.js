@@ -174,15 +174,15 @@ export const getEvaluatedOceanListByFeatureList = (featureList) => {
 		}
 		
 		// For each facet, find any facets with data and evaluate them.
-		for( var evalOceanFacet of evalOceanFactor.facetList )
+		for( var evalOceanFacet2 of evalOceanFactor.facetList )
 		{
 			let foundMatchFacet2 = false;
 			for( var aggFacet2 of aggFactorMatch.facetList )
 			{
-				if( evalOceanFacet.name === aggFacet2.name )
+				if( evalOceanFacet2.name === aggFacet2.name )
 				{
-					evalOceanFacet.min = Math.max(...aggFacet2.min);
-					evalOceanFacet.max = Math.max(...aggFacet2.max);
+					evalOceanFacet2.min = Math.max(...aggFacet2.min);
+					evalOceanFacet2.max = Math.max(...aggFacet2.max);
 					
 					foundMatchFacet2 = true;
 					break;
@@ -191,8 +191,8 @@ export const getEvaluatedOceanListByFeatureList = (featureList) => {
 			
 			if( !foundMatchFacet2 )
 			{
-				evalOceanFacet.min = 0;
-				evalOceanFacet.max = 0;
+				evalOceanFacet2.min = 0;
+				evalOceanFacet2.max = 0;
 			}
 		}
 		

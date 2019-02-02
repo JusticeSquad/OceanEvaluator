@@ -5,6 +5,10 @@ import {
 	requestProjectList
 } from '../actions/projectActions';
 import { requestFeatureList } from '../actions/featureActions';
+import {
+	ACTION_TYPE_VIEW,
+	actionViewChange
+} from '../actions/viewActions';
 
 
 const stylesProjectCardContainer = {
@@ -24,6 +28,7 @@ class ProjectListCard extends React.Component {
 	handleClick(project) {
 		this.props.dispatch(actionSelectProject(project));
 		this.props.dispatch(requestFeatureList(project._id));
+		this.props.dispatch(actionViewChange(ACTION_TYPE_VIEW.SET_PROJECT_OVERVIEW));
 	}
 	
 	render() {

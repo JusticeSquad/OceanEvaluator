@@ -12,12 +12,16 @@ import {
 	reducerProjectList,
 	reducerSelectProject
 } from './reducers/projectReducers';
+import {
+	reducerViewList
+} from './reducers/viewReducers';
 
 
 const reducers = combineReducers({
 	projectListData: reducerProjectList,
 	selectedProjectId: reducerSelectProject,
-	featureListData: reducerFeatureList
+	featureListData: reducerFeatureList,
+	viewList: reducerViewList
 });
 
 const store = createStore(
