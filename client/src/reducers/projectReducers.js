@@ -27,6 +27,10 @@ export const reducerProjectList = (state={
 			return Object.assign({}, state, {
 				didInvalidate: true
 			});
+		case ACTION_TYPE_PROJECT_LIST.ADD:
+			return Object.assign({}, state, {
+				projectList: state.projectList.concat(action.project)
+			});
 		default:
 			return state;
 	}

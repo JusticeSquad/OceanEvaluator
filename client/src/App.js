@@ -7,6 +7,7 @@ import {
 } from './actions/viewActions';
 import Header from './components/Header';
 import ProjectListCard from './components/ProjectListCard';
+import AddProjectCard from './components/AddProjectCard';
 import SelectedProjectCard from './components/SelectedProjectCard';
 import FeatureListCard from './components/FeatureListCard';
 import AddFeatureCard from './components/AddFeatureCard';
@@ -29,6 +30,8 @@ class App extends React.Component {
 		{
 			case ACTION_VIEW.PROJECT_SELECT:
 				return <ProjectListCard key={keyName} />
+			case ACTION_VIEW.FORM_ADD_PROJECT:
+				return <AddProjectCard key={keyName} />
 			case ACTION_VIEW.PROJECT_OVERVIEW:
 				return <SelectedProjectCard key={keyName} />
 			case ACTION_VIEW.FEATURE_LIST:

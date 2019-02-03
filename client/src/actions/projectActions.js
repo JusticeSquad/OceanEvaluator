@@ -5,7 +5,8 @@ export const ACTION_TYPE_PROJECT_LIST = {
 	REQUEST: 'PROJECT_REQUEST',
 	RECEIVE: 'PROJECT_RECEIVE',
 	INVALIDATE: 'PROJECT_INVALIDATE',
-	SELECT: 'PROJECT_SELECT'
+	SELECT: 'PROJECT_SELECT',
+	ADD: 'PROJECT_ADD'
 };
 
 export const actionRequestProjectList = () => ({
@@ -25,7 +26,12 @@ export const actionInvalidateProjectList = () => ({
 export const actionSelectProject = (project) => ({
 	type: ACTION_TYPE_PROJECT_LIST.SELECT,
 	selectedProjectId: project._id
-})
+});
+
+export const actionAddProject = (project) => ({
+	type: ACTION_TYPE_PROJECT_LIST.ADD,
+	project
+});
 
 function getProjectList() {
 	return dispatch => {

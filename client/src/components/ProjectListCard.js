@@ -21,8 +21,18 @@ const stylesProjectCardContainer = {
 };
 
 class ProjectListCard extends React.Component {
+	constructor(props) {
+		super(props);
+		
+		this.handleClickAddNewProject = this.handleClickAddNewProject.bind(this);
+	}
+	
 	componentDidMount() {
 		this.props.dispatch(requestProjectList());
+	}
+	
+	handleClickAddNewProject() {
+		this.props.dispatch(actionViewChange(ACTION_TYPE_VIEW.ADD_FORM_ADD_PROJECT));
 	}
 	
 	handleClick(project) {
@@ -37,7 +47,7 @@ class ProjectListCard extends React.Component {
 				<h2>Projects</h2>
 				
 				<form>
-					<input type='button' value='Add New Project' />
+					<input type='button' value='Add New Project' onClick={this.handleClickAddNewProject} />
 				</form>
 				
 				<ul>

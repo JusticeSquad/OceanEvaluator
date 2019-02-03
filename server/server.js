@@ -40,6 +40,21 @@ app.get('/projectList', (req, res) => {
 	});
 });
 
+app.post('/addProject', (req, res) => {
+	const newProject = {
+		name: req.body.name,
+		description: req.body.description
+	};
+	
+	// TODO: Improve error handling
+	(new Project(newProject)).save((error, project) => {
+		if( error )
+			res.status(412).send(error);
+		else
+			res.json(project);
+	});
+});
+
 app.get('/featureList/:projectId', (req, res) => {
 	Feature.find(
 		{ projectId: req.params.projectId },
