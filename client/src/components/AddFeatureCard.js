@@ -3,6 +3,10 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import OceanFactorSelectionCard from './OceanFactorSelectionCard';
 import { actionAddFeature } from '../actions/featureActions';
+import {
+	ACTION_TYPE_VIEW,
+	actionViewChange
+} from '../actions/viewActions';
 import { oceanFactorData } from '../data/oceanFactorData';
 import { getFacetListByFactor } from '../utils';
 
@@ -16,6 +20,10 @@ const stylesAddFeatureCardContainer = {
 	verticalAlign: 'top'
 }
 
+const stylesAddFeatureCardCloseButton = {
+	float: 'right'
+}
+
 class AddFeatureCard extends React.Component {
 	constructor(props) {
 		super(props)
@@ -27,6 +35,7 @@ class AddFeatureCard extends React.Component {
 			submitDisabled: false
 		};
 		
+		this.handleClose = this.handleClose.bind(this);
 		this.handleChangeName = this.handleChangeName.bind(this);
 		this.handleChangeDescription = this.handleChangeDescription.bind(this);
 		this.handleAddOceanFactor = this.handleAddOceanFactor.bind(this);
@@ -34,6 +43,10 @@ class AddFeatureCard extends React.Component {
 		this.handleSelectFactor = this.handleSelectFactor.bind(this);
 		this.handleFacetChange = this.handleFacetChange.bind(this);
 		this.renderOceanFactorSelectionCard = this.renderOceanFactorSelectionCard.bind(this);
+	}
+	
+	handleClose() {
+		this.props.dispatch(actionViewChange(ACTION_TYPE_VIEW.REMOVE_FORM_ADD_FEATURE));
 	}
 	
 	/** Input Handlers *******************************************************/
@@ -169,6 +182,9 @@ class AddFeatureCard extends React.Component {
 	render() {
 		return (
 			<div style={stylesAddFeatureCardContainer}>
+				<input type='button' value='Close'
+					style={stylesAddFeatureCardCloseButton}
+					onClick={this.handleClose} />
 				<form onSubmit={this.handleSubmit}>
 					<div>
 						<label>Feature Name:</label>

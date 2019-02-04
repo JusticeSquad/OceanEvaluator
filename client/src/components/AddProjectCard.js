@@ -2,6 +2,10 @@ import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { actionAddProject } from '../actions/projectActions';
+import {
+	ACTION_TYPE_VIEW,
+	actionViewChange
+} from '../actions/viewActions';
 
 
 const stylesAddProjectCardContainer = {
@@ -12,15 +16,24 @@ const stylesAddProjectCardContainer = {
 	padding: '20px'
 }
 
+const stylesAddProjectCardCloseButton = {
+	float: 'right'
+}
+
 class AddProjectCard extends React.Component {
 	constructor(props) {
 		super(props);
 		
 		this.state = { name: '', description: '', submitDisabled: false };
 		
+		this.handleClose = this.handleClose.bind(this);
 		this.handleChangeName = this.handleChangeName.bind(this);
 		this.handleChangeDescription = this.handleChangeDescription.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
+	}
+	
+	handleClose() {
+		this.props.dispatch(actionViewChange(ACTION_TYPE_VIEW.REMOVE_FORM_ADD_PROJECT));
 	}
 	
 	handleChangeName(event) {
@@ -57,6 +70,9 @@ class AddProjectCard extends React.Component {
 	render() {
 		return (
 			<div style={stylesAddProjectCardContainer}>
+				<input type='button' value='Close'
+					style={stylesAddProjectCardCloseButton}
+					onClick={this.handleClose} />
 				<h2>Add New Project</h2>
 				
 				<form onSubmit={this.handleSubmit}>

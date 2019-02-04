@@ -1,5 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import {
+	ACTION_TYPE_VIEW,
+	actionViewChange
+} from '../actions/viewActions';
 import OceanFactorCard from './OceanFactorCard';
 import { getFactorListByFacetList } from '../utils';
 
@@ -19,10 +23,28 @@ const stylesFeatureCard = {
 	maxWidth: '400px'
 }
 
+const stylesFeatureListCardCloseButton = {
+	float: 'right'
+}
+
 class FeatureListCard extends React.Component {
+	constructor(props) {
+		super(props);
+		
+		this.handleClose = this.handleClose.bind(this);
+	}
+	
+	handleClose() {
+		this.props.dispatch(actionViewChange(ACTION_TYPE_VIEW.REMOVE_FEATURE_LIST));
+	}
+	
 	render() {
 		return (
 			<div style={stylesFeatureListCardContainer}>
+				<input type='button' value='Close'
+					style={stylesFeatureListCardCloseButton}
+					onClick={this.handleClose} />
+				
 				<h2>Features</h2>
 				
 				{this.props.featureListData.featureList.length > 0 &&
