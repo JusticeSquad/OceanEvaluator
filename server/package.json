@@ -5,16 +5,18 @@
   "main": "index.js",
   "scripts": {
     "start": "concurrently \"nodemon server.js\" \"cd ..\\client && npm start\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "\"cd tests && mocha index.js\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "chai": "^4.2.0",
     "concurrently": "^4.1.0",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
+    "mocha": "^5.2.0",
     "mongoose": "^5.4.6",
     "morgan": "^1.9.1",
     "nodemon": "^1.18.9"

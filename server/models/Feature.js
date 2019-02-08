@@ -4,14 +4,17 @@ const featureSchema = mongoose.Schema({
 	name: {
 		type: String,
 		trim: true,
+		required: true
 	},
 	projectId: {
 		type: mongoose.Schema.ObjectId,
-		ref: 'Project'
+		ref: 'Project',
+		required: true
 	},
 	description: {
 		type: String,
-		trim: true
+		trim: true,
+		required: true
 	},
 	facetList: [
 		{

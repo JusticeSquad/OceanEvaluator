@@ -4,10 +4,12 @@ const projectSchema = mongoose.Schema({
 	name: {
 		type: String,
 		trim: true,
+		required: true
 	},
 	description: {
 		type: String,
-		trim: true
+		trim: true,
+		required: true
 	}
 });
 
