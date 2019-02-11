@@ -4,20 +4,20 @@ const assert = chai.assert;
 require('dotenv').config({ path: '../variables.env' });
 
 /** MongoDB Connections ******************************************************/
-exports.connectToTestDb = function(done) {
+exports.connectToTestDb = function(callback) {
 	mongoose.connect(process.env.TEST_DATABASE, { useNewUrlParser: true });
 	db = mongoose.connection;
 	db.on('error', console.error.bind(console, 'Error connecting to DB'));
-	db.once('open', done);
+	db.once('open', callback);
 };
 
 exports.resetTestDb = function(callback) {
 	mongoose.connection.db.dropDatabase(callback);
 };
 
-exports.closeConnectionToTestDb = function(done) {
+exports.closeConnectionToTestDb = function(callback) {
 	mongoose.connection.db.dropDatabase(function() {
-		mongoose.connection.close(done);
+		mongoose.connection.close(callback);
 	});
 };
 /*****************************************************************************/
