@@ -4,7 +4,7 @@ OCEAN Evaluator is a tool for evaluating projects in terms of the psychological 
 OCEAN Evaluator is a work in progress, currently boasting only its most basic features and nearly no design.
 
 ## Walkthrough
-![alt Home](https://raw.githubusercontent.com/JusticeSquad/OceanEvaluator/master/images/home.png)
+![alt Home](https://github.com/JusticeSquad/OceanEvaluator/blob/master/images/home.png)
 This is the home page. It offers a brief explanation of the project (yes, it's very ugly for now -- I promise actual design is coming!).
 
 Click on the link at the bottom to go to the "Projects" page.
@@ -20,7 +20,7 @@ This is the form for adding a new project. Let's fill it out with a hypothetical
 We can see our new project! To view this project and perform analysis, click on the project link.
 
 ### Add a Feature
-![alt Project Evaluator](https://github.com/JusticeSquad/OceanEvaluator/blob/master/images/projectsEvaluationEmpty.png)
+![alt Project Evaluator](https://github.com/JusticeSquad/OceanEvaluator/blob/master/images/projectEvaluationEmpty.png)
 We're now looking at our project info, but there isn't anything there. Now we get to see this thing. It has no content. In order to add data, add features.
 
 ![alt Add Feature](https://github.com/JusticeSquad/OceanEvaluator/blob/master/images/addFeature.png)
@@ -38,7 +38,7 @@ Now that we have a feature, our evaluation card has some data in the facets we p
 ![alt Add Feature](https://github.com/JusticeSquad/OceanEvaluator/blob/master/images/addFeatureOceanData2.png)
 Things get more interesting when you have multiple features affecting the same facet. Let's add another feature with an "Adventurousness" score.
 
-![alt Project Evaluator](https://github.com/JusticeSquad/OceanEvaluator/blob/master/images/projectsEvaluation.png)
+![alt Project Evaluator](https://github.com/JusticeSquad/OceanEvaluator/blob/master/images/projectEvaluation.png)
 Each facet score across all features are aggregated in the main evaluator section, as can be seen with the "Achievement-striving" and "Cautiousness" facets that come from different features. "Adventurousness" has multiple scores, so the evaluation accepts the highest score to emphasize the extremes that the project satisfies.
 
 ## Status
