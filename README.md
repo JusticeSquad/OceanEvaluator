@@ -10,35 +10,35 @@ This is the home page. It offers a brief explanation of the project (yes, it's v
 Click on the link at the bottom to go to the "Projects" page.
 
 ### Create a Project
-![alt Projects](https://raw.githubusercontent.com/JusticeSquad/OceanEvaluator/master/images/projectsEmpty.png)
+![alt Projects](https://github.com/JusticeSquad/OceanEvaluator/blob/master/images/projectsEmpty.png)
 This is the "Projects" page. We currently have no projects. To create a project, click the add button.
 
-![alt Add Project](https://raw.githubusercontent.com/JusticeSquad/OceanEvaluator/master/images/addProject.png)
+![alt Add Project](https://github.com/JusticeSquad/OceanEvaluator/blob/master/images/addProject.png)
 This is the form for adding a new project. Let's fill it out with a hypothetical idea for a social network for cooking enthusiasts. Click "Submit" to finalize your project.
 
-![alt Projects](https://raw.githubusercontent.com/JusticeSquad/OceanEvaluator/master/images/projectsUpdate.png)
+![alt Projects](https://github.com/JusticeSquad/OceanEvaluator/blob/master/images/projectsUpdate.png)
 We can see our new project! To view this project and perform analysis, click on the project link.
 
 ### Add a Feature
-![alt Project Evaluator](https://raw.githubusercontent.com/JusticeSquad/OceanEvaluator/master/images/projectsEvaluationEmpty.png)
+![alt Project Evaluator](https://github.com/JusticeSquad/OceanEvaluator/blob/master/images/projectsEvaluationEmpty.png)
 We're now looking at our project info, but there isn't anything there. Now we get to see this thing. It has no content. In order to add data, add features.
 
-![alt Add Feature](https://raw.githubusercontent.com/JusticeSquad/OceanEvaluator/master/images/addFeature.png)
+![alt Add Feature](https://github.com/JusticeSquad/OceanEvaluator/blob/master/images/addFeature.png)
 First, add the feature basic data. Here, we're adding a feature describing recipe sharing on the network.
 
-![alt Add Feature](https://raw.githubusercontent.com/JusticeSquad/OceanEvaluator/master/images/addFeatureOceanData.png)
+![alt Add Feature](https://github.com/JusticeSquad/OceanEvaluator/blob/master/images/addFeatureOceanData.png)
 Now, let's add the OCEAN data. Click the "Add Ocean Factor" button and select any of the five factors from the dropdown. Add values to any of the facets. Here, we're adding an "Adventurousness" score of 60.
 
 After adding a few more scores, we'll click "Save" to finalize this feature.
 
 ### View Features
-![alt View Features](https://raw.githubusercontent.com/JusticeSquad/OceanEvaluator/master/images/viewFeatures.png)
+![alt View Features](https://github.com/JusticeSquad/OceanEvaluator/blob/master/images/viewFeatures.png)
 Now that we have a feature, our evaluation card has some data in the facets we put scores in. To check our features, click the "View All Features" button.
 
-![alt Add Feature](https://raw.githubusercontent.com/JusticeSquad/OceanEvaluator/master/images/addFeatureOceanData2.png)
+![alt Add Feature](https://github.com/JusticeSquad/OceanEvaluator/blob/master/images/addFeatureOceanData2.png)
 Things get more interesting when you have multiple features affecting the same facet. Let's add another feature with an "Adventurousness" score.
 
-![alt Project Evaluator](https://raw.githubusercontent.com/JusticeSquad/OceanEvaluator/master/images/projectsEvaluation.png)
+![alt Project Evaluator](https://github.com/JusticeSquad/OceanEvaluator/blob/master/images/projectsEvaluation.png)
 Each facet score across all features are aggregated in the main evaluator section, as can be seen with the "Achievement-striving" and "Cautiousness" facets that come from different features. "Adventurousness" has multiple scores, so the evaluation accepts the highest score to emphasize the extremes that the project satisfies.
 
 ## Status
