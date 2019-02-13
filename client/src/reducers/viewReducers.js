@@ -6,6 +6,9 @@ import {
 export const reducerViewList = (state=[], action) => {
 	switch( action.type )
 	{
+		case ACTION_TYPE_VIEW.SET_HOME:
+			return [ACTION_VIEW.HOME];
+		
 		case ACTION_TYPE_VIEW.SET_PROJECT_SELECT:
 			return [ACTION_VIEW.PROJECT_SELECT];
 		case ACTION_TYPE_VIEW.ADD_FORM_ADD_PROJECT:

@@ -9,6 +9,7 @@ import {
 	ACTION_TYPE_VIEW,
 	actionViewChange
 } from '../actions/viewActions';
+import { styleData } from '../data/styleData';
 
 
 const stylesProjectCardContainer = {
@@ -53,7 +54,10 @@ class ProjectListCard extends React.Component {
 				<ul>
 					{this.props.projectListData.projectList.map((project, index) => (
 						<li key={`ocean-eval-project-${project._id}`}>
-							<input type='button' onClick={this.handleClick.bind(this, project)} value={project.name} />
+							<input type='button'
+								style={styleData.buttonToLink}
+								onClick={this.handleClick.bind(this, project)}
+								value={project.name} />
 						</li>
 					))}
 				</ul>

@@ -6,6 +6,7 @@ import {
 	actionViewChange
 } from './actions/viewActions';
 import Header from './components/Header';
+import Home from './components/Home';
 import ProjectListCard from './components/ProjectListCard';
 import AddProjectCard from './components/AddProjectCard';
 import SelectedProjectCard from './components/SelectedProjectCard';
@@ -20,7 +21,7 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 		
-		this.props.dispatch(actionViewChange(ACTION_TYPE_VIEW.SET_PROJECT_SELECT));
+		this.props.dispatch(actionViewChange(ACTION_TYPE_VIEW.SET_HOME));
 	}
 	
 	renderView(view, index) {
@@ -28,6 +29,8 @@ class App extends React.Component {
 		
 		switch(view)
 		{
+			case ACTION_VIEW.HOME:
+				return <Home key={keyName} />
 			case ACTION_VIEW.PROJECT_SELECT:
 				return <ProjectListCard key={keyName} />
 			case ACTION_VIEW.FORM_ADD_PROJECT:

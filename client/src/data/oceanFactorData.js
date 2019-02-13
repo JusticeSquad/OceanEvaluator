@@ -91,47 +91,137 @@ export const oceanFactorData = [
 				summaryLow: 'Rush into things'
 			}
 		]
-	}
-/*	{
+	},
+	{
 		name: 'Extraversion', // Austin Powers v Edward Scissorhands
-		description: '',
+		description: 'Distinguishes those with high energy and engagement with the external world from those that need less stimulation.',
 		summaryHigh: '',
 		summaryLow: '',
 		facetList: [
 			{
-				name: 'Fantasy',
+				name: 'Friendliness',
 				description: '',
-				summaryHigh: '',
-				summaryLow: ''
+				summaryHigh: 'Make friends easily',
+				summaryLow: 'Am hard to get to know'
+			},
+			{
+				name: 'Gregariousness',
+				description: '',
+				summaryHigh: 'Love large parties',
+				summaryLow: 'Prefer to be alone'
+			},
+			{
+				name: 'Assertiveness',
+				description: '',
+				summaryHigh: 'Take charge',
+				summaryLow: 'Wait for others to lead the way'
+			},
+			{
+				name: 'Activity Level',
+				description: '',
+				summaryHigh: 'Am always busy',
+				summaryLow: 'Like to take it easy'
+			},
+			{
+				name: 'Excitement-seeking',
+				description: '',
+				summaryHigh: 'Love excitement',
+				summaryLow: 'Dislike loud music'
+			},
+			{
+				name: 'Cheerfulness',
+				description: '',
+				summaryHigh: 'Radiate joy',
+				summaryLow: 'Am seldom amused'
 			}
 		]
 	},
 	{
 		name: 'Agreeableness', // Hagrid v Snake Pliskin
-		description: '',
+		description: 'Distinguishes those that value getting along with others from those that place self-interest above getting along with others.',
 		summaryHigh: '',
 		summaryLow: '',
 		facetList: [
 			{
-				name: 'Fantasy',
+				name: 'Trust',
 				description: '',
-				summaryHigh: '',
-				summaryLow: ''
+				summaryHigh: 'Trust others',
+				summaryLow: 'Distrust people'
+			},
+			{
+				name: 'Morality',
+				description: '',
+				summaryHigh: 'Would never cheat on taxes',
+				summaryLow: 'Use flattery to get ahead'
+			},
+			{
+				name: 'Altruism',
+				description: '',
+				summaryHigh: 'Make people feel welcome',
+				summaryLow: 'Look down on others'
+			},
+			{
+				name: 'Cooperation',
+				description: '',
+				summaryHigh: 'Am easy to satisfy',
+				summaryLow: 'Have a sharp tongue'
+			},
+			{
+				name: 'Modesty',
+				description: '',
+				summaryHigh: 'Dislike being center of attention',
+				summaryLow: 'Think highly of myself'
+			},
+			{
+				name: 'Sympathy',
+				description: '',
+				summaryHigh: 'Sympathize with the homeless',
+				summaryLow: 'Believe in eye for eye'
 			}
 		]
 	},
 	{
 		name: 'Neuroticism', // Woody Allen v Obi Wan
-		description: '',
+		description: 'Distinguishes those that are more emotionally reactive from those that are less emotionally reactive.',
 		summaryHigh: '',
 		summaryLow: '',
 		facetList: [
 			{
-				name: 'Fantasy',
+				name: 'Anxiety',
 				description: '',
-				summaryHigh: '',
-				summaryLow: ''
+				summaryHigh: 'Worry about things',
+				summaryLow: 'Relaxed most of the time'
+			},
+			{
+				name: 'Anger',
+				description: '',
+				summaryHigh: 'Get angry easily',
+				summaryLow: 'Rarely get irritated'
+			},
+			{
+				name: 'Depression',
+				description: '',
+				summaryHigh: 'Often feel blue',
+				summaryLow: 'Feel comfortable with myself'
+			},
+			{
+				name: 'Self-consciousness',
+				description: '',
+				summaryHigh: 'Am easily intimidated',
+				summaryLow: 'Am not embarrassed easily'
+			},
+			{
+				name: 'Immoderation',
+				description: '',
+				summaryHigh: 'Often eat too much',
+				summaryLow: 'Easily resist temptations'
+			},
+			{
+				name: 'Vulnerability',
+				description: '',
+				summaryHigh: 'Panic easily',
+				summaryLow: 'Remain calm under pressure'
 			}
 		]
-	}*/
+	}
 ];
