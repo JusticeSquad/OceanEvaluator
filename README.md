@@ -21,19 +21,19 @@ We can see our new project! To view this project and perform analysis, click on 
 
 ### Add a Feature
 ![alt Project Evaluator](https://github.com/JusticeSquad/OceanEvaluator/blob/master/images/projectEvaluationEmpty.png)
-We're now looking at our project info, but there isn't anything there. Now we get to see this thing. It has no content. In order to add data, add features.
+We're now looking at our project info, but there isn't any data to see. In order to add data, we have to start adding features.
 
 ![alt Add Feature](https://github.com/JusticeSquad/OceanEvaluator/blob/master/images/addFeature.png)
 First, add the feature basic data. Here, we're adding a feature describing recipe sharing on the network.
 
 ![alt Add Feature](https://github.com/JusticeSquad/OceanEvaluator/blob/master/images/addFeatureOceanData.png)
-Now, let's add the OCEAN data. Click the "Add Ocean Factor" button and select any of the five factors from the dropdown. Add values to any of the facets. Here, we're adding an "Adventurousness" score of 60.
+Now, let's add the OCEAN data. Click the "Add Ocean Factor" button and select any of the five factors from the dropdown. Once selected, we can add values to any of the facets. Here, we're adding an "Adventurousness" score of 60.
 
 After adding a few more scores, we'll click "Save" to finalize this feature.
 
 ### View Features
 ![alt View Features](https://github.com/JusticeSquad/OceanEvaluator/blob/master/images/viewFeatures.png)
-Now that we have a feature, our evaluation card has some data in the facets we put scores in. To check our features, click the "View All Features" button.
+Now that we have a feature, our evaluation card has some data in the facets we put scores in. We can bring up the feature list (pictured on the right) by clicking the "View All Features" button.
 
 ![alt Add Feature](https://github.com/JusticeSquad/OceanEvaluator/blob/master/images/addFeatureOceanData2.png)
 Things get more interesting when you have multiple features affecting the same facet. Let's add another feature with an "Adventurousness" score.
