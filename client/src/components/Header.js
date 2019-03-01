@@ -1,5 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/core/Icon';
+import IconButton from '@material-ui/core/IconButton';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 import {
 	ACTION_TYPE_VIEW,
 	actionViewChange
@@ -7,31 +14,17 @@ import {
 import { styleData } from '../data/styleData';
 
 
-const stylesHeaderMain = {
-	backgroundColor: styleData.colorPallette.mainBrand,
-	color: styleData.colorPallette.lightShade,
-	
-	padding: '20px'
-};
-
-const stylesHeaderTitle = {
-	display: 'inline-block'
-};
-
-const stylesHeaderMenuContainer = {
-	display: 'inline-block',
-	fontSize: '1.5em',
-	marginLeft: '65px'
-};
-
-const stylesHeaderMenuListMain = {
-	listStyle: 'none',
-	padding: '0'
-};
-
-const stylesHeaderMenuListItem = {
-	display: 'inline-block',
-	marginLeft: '35px'
+const styles = {
+	root: {
+		flexGrow: 1
+	},
+	headerTitle: {
+		flexGrow: 1
+	},
+	menuButton: {
+		marginLeft: -12,
+		marginRight: 20
+	}
 };
 
 class Header extends React.Component {
@@ -51,33 +44,28 @@ class Header extends React.Component {
 	}
 	
 	render() {
+		const { classes } = this.props;
+		
 		return (
-			<div className='ocean-eval-header' style={stylesHeaderMain}>
-				<h1 style={stylesHeaderTitle}>OCEAN Evaluator</h1>
-				
-				<div style={stylesHeaderMenuContainer}>
-					<ul style={stylesHeaderMenuListMain}>
-						<li style={stylesHeaderMenuListItem}>
-							<input type='button'
-								value='Home'
-								style={Object.assign(
-									{},
-									styleData.buttonToLink,
-									{color: styleData.colorPallette.lightShade})}
-								onClick={this.handleLinkHome} />
-						</li>
-						<li style={stylesHeaderMenuListItem}>
-							<input type='button'
-								value='View Projects'
-								style={Object.assign(
-									{},
-									styleData.buttonToLink,
-									{color: styleData.colorPallette.lightShade})}
-								onClick={this.handleLinkProjectList} />
-						</li>
-					</ul>
-				</div>
-			</div>
+			<AppBar position='static' className={classes.root}>
+				<Toolbar>
+					<Typography variant='h6'
+						color='inherit'
+						className={classes.headerTitle}>
+						OCEAN Evaluator
+					</Typography>
+					<IconButton color='inherit'
+						className={classes.menuButton}
+						onClick={this.handleLinkHome}>
+						<Icon>home</Icon>
+					</IconButton>
+					<IconButton color='inherit'
+						className={classes.menuButton}
+						onClick={this.handleLinkProjectList}>
+						<Icon>library_books</Icon>
+					</IconButton>
+				</Toolbar>
+			</AppBar>
 		);
 	}
 }
@@ -86,4 +74,4 @@ const mapStateToProps = state => ({
 	...state
 });
 
-export default connect(mapStateToProps)(Header);
+export default withStyles(styles)(connect(mapStateToProps)(Header));

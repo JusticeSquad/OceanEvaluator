@@ -1,6 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {
+	createMuiTheme,
+	MuiThemeProvider
+} from '@material-ui/core/styles';
+import {
 	ACTION_TYPE_VIEW,
 	ACTION_VIEW,
 	actionViewChange
@@ -12,6 +16,9 @@ import AddProjectCard from './components/AddProjectCard';
 import SelectedProjectCard from './components/SelectedProjectCard';
 import FeatureListCard from './components/FeatureListCard';
 import AddFeatureCard from './components/AddFeatureCard';
+import { styleData } from './data/styleData';
+
+const theme = createMuiTheme(styleData.muiTheme);
 
 const stylesMainContainer = {
 	padding: '20px'
@@ -48,13 +55,13 @@ class App extends React.Component {
 	
 	render() {
 		return (
-			<div className="ocean-eval-main-container">
+			<MuiThemeProvider theme={theme}>
 				<Header />
 				
 				<div style={stylesMainContainer}>
 					{this.props.viewList.map(this.renderView)}
 				</div>
-			</div>
+			</MuiThemeProvider>
 		);
 	}
 }
