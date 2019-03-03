@@ -1,5 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
 import {
 	actionSelectProject,
 	requestProjectList
@@ -19,6 +27,12 @@ const stylesProjectCardContainer = {
 	padding: '10px',
 	border: '1px solid black',
 	borderRadius: '10px'
+};
+
+const styles = {
+	root: {
+		padding: '10px'
+	}
 };
 
 class ProjectListCard extends React.Component {
@@ -43,25 +57,34 @@ class ProjectListCard extends React.Component {
 	}
 	
 	render() {
+		const { classes } = this.props;
+		
 		return (
-			<div style={stylesProjectCardContainer}>
-				<h2>Projects</h2>
-				
-				<form>
-					<input type='button' value='Add New Project' onClick={this.handleClickAddNewProject} />
-				</form>
-				
-				<ul>
-					{this.props.projectListData.projectList.map((project, index) => (
-						<li key={`ocean-eval-project-${project._id}`}>
-							<input type='button'
-								style={styleData.buttonToLink}
-								onClick={this.handleClick.bind(this, project)}
-								value={project.name} />
-						</li>
-					))}
-				</ul>
-			</div>
+			<Grid item xs={12} sm={4}>
+				<Paper className={classes.root}>
+					<Typography variant={styleData.typographyVariantTitle}>
+						Projects
+					</Typography>
+					
+					<form>
+						<Button color='primary'
+							variant='contained'
+							onClick={this.handleClickAddNewProject}>
+							Add New Project
+						</Button>
+					</form>
+					
+					<List>
+						{this.props.projectListData.projectList.map((project, index) => (
+							<ListItem key={`ocean-eval-project-${project._id}`}
+								button
+								onClick={this.handleClick.bind(this, project)}>
+								<ListItemText primary={project.name} />
+							</ListItem>
+						))}
+					</List>
+				</Paper>
+			</Grid>
 		);
 	}
 };
@@ -70,4 +93,4 @@ const mapStateToProps = state => ({
 	...state
 });
 
-export default connect(mapStateToProps)(ProjectListCard);
+export default withStyles(styles)(connect(mapStateToProps)(ProjectListCard));

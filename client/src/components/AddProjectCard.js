@@ -1,19 +1,26 @@
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import Fab from '@material-ui/core/Fab';
+import Grid from '@material-ui/core/Grid';
+import Icon from '@material-ui/core/Icon';
+import Paper from '@material-ui/core/Paper';
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
 import { actionAddProject } from '../actions/projectActions';
 import {
 	ACTION_TYPE_VIEW,
 	actionViewChange
 } from '../actions/viewActions';
+import { styleData } from '../data/styleData';
 
 
-const stylesAddProjectCardContainer = {
-	display: 'inline-block',
-	marginLeft: '20px',
-	border: '1px solid black',
-	borderRadius: '10px',
-	padding: '20px'
+const styles = {
+	closeButton: {
+		float: 'right'
+	}
 }
 
 const stylesAddProjectCardCloseButton = {
@@ -68,35 +75,47 @@ class AddProjectCard extends React.Component {
 	}
 	
 	render() {
+		const { classes } = this.props;
+		
 		return (
-			<div style={stylesAddProjectCardContainer}>
-				<input type='button' value='Close'
-					style={stylesAddProjectCardCloseButton}
-					onClick={this.handleClose} />
-				<h2>Add New Project</h2>
-				
-				<form onSubmit={this.handleSubmit}>
-					<div>
-						<label>Name:</label>
-						<input type='text'
-							value={this.state.name}
-							onChange={this.handleChangeName}
-							disabled={this.state.submitDisabled}
-							placeholder='Enter Project Name' />
-					</div>
+			<Grid item xs={12} sm={3}>
+				<Paper>
+					<Fab color='secondary'
+						className={classes.closeButton}
+						size='small'
+						onClick={this.handleClose}>
+						<Icon>clear</Icon>
+					</Fab>
 					
-					<div>
-						<label>Description:</label>
-						<input type='textarea'
-							value={this.state.description}
-							onChange={this.handleChangeDescription}
-							disabled={this.state.submitDisabled}
-							placeholder='Enter Project Description' />
-					</div>
+					<Typography variant={styleData.typographyVariantTitle}>
+						Add New Project
+					</Typography>
 					
-					<input type='submit' value='Submit' disabled={this.state.submitDisabled} />
-				</form>
-			</div>
+					<form onSubmit={this.handleSubmit}>
+						<p>
+							<TextField
+								label='Name'
+								value={this.state.name}
+								onChange={this.handleChangeName}
+								disabled={this.state.submitDisabled}/>
+						</p>
+						
+						<p>
+							<TextField
+								label='Description'
+								value={this.state.description}
+								onChange={this.handleChangeDescription}
+								disabled={this.state.submitDisabled}/>
+						</p>
+						
+						<Button variant='contained'
+							color='primary'
+							disabled={this.state.submitDisabled}>
+							Submit
+						</Button>
+					</form>
+				</Paper>
+			</Grid>
 		);
 	}
 }
@@ -105,4 +124,4 @@ const mapStateToProps = state => ({
 	...state
 });
 
-export default connect(mapStateToProps)(AddProjectCard);
+export default withStyles(styles)(connect(mapStateToProps)(AddProjectCard));

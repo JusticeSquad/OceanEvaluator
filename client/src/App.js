@@ -4,6 +4,7 @@ import {
 	createMuiTheme,
 	MuiThemeProvider
 } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
 import {
 	ACTION_TYPE_VIEW,
 	ACTION_VIEW,
@@ -19,10 +20,6 @@ import AddFeatureCard from './components/AddFeatureCard';
 import { styleData } from './data/styleData';
 
 const theme = createMuiTheme(styleData.muiTheme);
-
-const stylesMainContainer = {
-	padding: '20px'
-}
 
 class App extends React.Component {
 	constructor(props) {
@@ -58,9 +55,9 @@ class App extends React.Component {
 			<MuiThemeProvider theme={theme}>
 				<Header />
 				
-				<div style={stylesMainContainer}>
+				<Grid container spacing={16}>
 					{this.props.viewList.map(this.renderView)}
-				</div>
+				</Grid>
 			</MuiThemeProvider>
 		);
 	}

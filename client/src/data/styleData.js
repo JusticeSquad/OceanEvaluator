@@ -7,8 +7,19 @@ export const styleData = {
 		palette: {
 			primary: indigo,
 			secondary: red
+		},
+		
+		overrides: {
+			MuiPaper: {
+				root: {
+					height: '100%',
+					padding: '10px'
+				}
+			}
 		}
 	},
+	
+	typographyVariantTitle: 'h4',
 	
 	'colorPallette': {
 		'lightShade': '#e5e6e7',

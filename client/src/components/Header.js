@@ -16,7 +16,8 @@ import { styleData } from '../data/styleData';
 
 const styles = {
 	root: {
-		flexGrow: 1
+		flexGrow: 1,
+		marginBottom: '20px'
 	},
 	headerTitle: {
 		flexGrow: 1
